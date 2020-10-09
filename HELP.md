@@ -1,11 +1,31 @@
 # Deployment tests
-    Deployed build with React:  https://peaceful-peak-49501.herokuapp.com/
-    access java backend test: https://peaceful-peak-49501.herokuapp.com/db
-    access heroku database test ticks: https://peaceful-peak-49501.herokuapp.com/db 
+    Deployed build with React:  [https://peaceful-peak-49501.herokuapp.com/](https://peaceful-peak-49501.herokuapp.com/)
+    Access java backend test: [https://peaceful-peak-49501.herokuapp.com/test](https://peaceful-peak-49501.herokuapp.com/test)
+    Access heroku database test ticks: [https://peaceful-peak-49501.herokuapp.com/db](https://peaceful-peak-49501.herokuapp.com/db)
+
+### Heroku help
+- Sequence:
+    - heroku login
+    - heroku create
+    - git push heroku main || git push heroku master (if main doesn't work, had mixed results)
+        - if in a branch:
+            - git push heroku nameOfBranch:master
+- Misc:
+    - heroku logs --tail
+    - heroku ps:scale web={number}  this specifies number of dynos to use for webservice)
+    - heroku open (this opens the web service in browesr at https address)
+    - heroku local web (this opens local build of app for dev)
+    - mvn clean install (will need to run this after every change, with heroku local web to see changes)
+    - heroku config (shows configurations to service)
+    - heroku addons (shows addons to service, default is postgresql for database)
+    - heroku pg (shows database information)
+    - heroku ps:psql gives access to run queries on the database (running this locally has issues, works better with deployed service)
 
 # Getting Started
 
-### References
+### References for React
+* [Maven](https://maven.apache.org/install.html):
+Maven used for Java/Spring boot build files
 * [Node.js](https://nodejs.org/en/download/): 
 Node is the foundation for React.js
 * [Bebelrc](https://babeljs.io/docs/en/): 
@@ -15,7 +35,7 @@ Webpack compiles multiple .js files into one file to load into scripts when star
 * [Yarn](https://classic.yarnpkg.com/en/):
 Makes package and dependency management easier.
 
-### Set up Environment
+### Set up Environment for React
 - Install Node, which  includes npm (which we will use to install other tools)
 - Install Yarn via npm locally in the project file path (i.e., path/to/project_name/ ): npm install yarn 
 - Install Babel locally in the project:
