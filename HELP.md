@@ -1,3 +1,8 @@
+# Deployment tests
+    Deployed build with React:  https://peaceful-peak-49501.herokuapp.com/
+    access java backend test: https://peaceful-peak-49501.herokuapp.com/db
+    access heroku database test ticks: https://peaceful-peak-49501.herokuapp.com/db 
+
 # Getting Started
 
 ### References
@@ -26,6 +31,8 @@ Makes package and dependency management easier.
     - yarn add webpack webpack-cli
 - Install React components via Yarn:
     - yarn add react react-dom
+
+
 
 
 
