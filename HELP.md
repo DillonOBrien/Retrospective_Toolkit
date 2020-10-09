@@ -1,7 +1,7 @@
 # Deployment tests
-    Deployed build with React:  [https://peaceful-peak-49501.herokuapp.com/](https://peaceful-peak-49501.herokuapp.com/)
-    Access java backend test: [https://peaceful-peak-49501.herokuapp.com/test](https://peaceful-peak-49501.herokuapp.com/test)
-    Access heroku database test ticks: [https://peaceful-peak-49501.herokuapp.com/db](https://peaceful-peak-49501.herokuapp.com/db)
+* Deployed build with React:  [https://peaceful-peak-49501.herokuapp.com/](https://peaceful-peak-49501.herokuapp.com/)
+* Access java backend test: [https://peaceful-peak-49501.herokuapp.com/test](https://peaceful-peak-49501.herokuapp.com/test)
+* Access heroku database test ticks: [https://peaceful-peak-49501.herokuapp.com/db](https://peaceful-peak-49501.herokuapp.com/db)
 
 ### Heroku help
 - Sequence:
