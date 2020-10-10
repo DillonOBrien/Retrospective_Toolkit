@@ -3,7 +3,8 @@
 ## Sergio
 
 ## Dillon
-
+Network Diagram. Design will be updated along the way and to made more scalable. Although DNS is chosen since we are hosting form the cloud it is shown but may change to IP. 
+![Network Flow Diagram](resources/NetworkDiagram.png)
 ## Shane
 Network flow diagram updated.  Design needed to be able to scale.  Designed a forward looking architecture to accomodate a scaling design.  For the project we will implement a scaled down version, but having the design in place will ensure that we do not introduce any one way doors that would prevent this for succeeding as it scales.
 ![Network Flow Diagram](resources/netdiag.png)
