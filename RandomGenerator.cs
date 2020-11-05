@@ -12,7 +12,7 @@ public class DiceNumber : Behaviour {
 
 void OnTriggerStay(Collier col)
 {
-	if (diceV.x == 0f && diceV.y == 0f && diceVz == 0f)
+	if (diceV.x == 0f && diceV.y == 0f && diceV.z == 0f)
 	{
 		switch (col.gameObject.name) {
 		case "Side1":
