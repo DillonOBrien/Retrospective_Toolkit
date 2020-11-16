@@ -1,0 +1,17 @@
+Today I researched vector graphics and understanding how to import graphics onto models in unity. This is important since we have been drawing images to put onto dice but this takes awhile to draw all the iamges out. Using a .io library and being able to save from material.io and save them onto the die. This would save a few weeks of developing images for the dies. \
+
+Things learned about vector graphics. 
+
+--Use compatible versions, we are using 2018 version of unity. 
+--Per pixel masking is not supported making the task diffuclt. 
+--we can use the svg importer built in tool.
+-- it is essential the the number of svg units correspond to 1 scene unit
+-- We need to understand more about keeping the image masked to the model.
+-- currnetly we are providing tessellation in basic. Currently researching advanced
+---------------------------------------------------------------------
+Code pseudo for filling a mesh asset. Will be quite useful. 
+public static void FillMesh(
+    Mesh mesh,               
+    List<Geometry> geoms,    
+    float svgPixelsPerUnit,  
+    bool flipYAxis = false); 
