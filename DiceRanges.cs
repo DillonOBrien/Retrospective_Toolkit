@@ -5,6 +5,8 @@ using UnityEngine;
 public class DiceScript : Behaviour {
 	static Rigidbody rb;
 	public static V3 diceV;
+	public static X3 diceX;
+	public static Y3 diceY;
 	void start() {
 		rb = GetComponent<Rigidbody> ();
 	}
@@ -12,12 +14,12 @@ public class DiceScript : Behaviour {
 	diceV = rb.velocity;
 	if (Input.GetKeyDOwn (KeyCode.Space)) {
 		DiceNumberTextScript.diceNumber = 0;
-		float dirX = Random.Range (0,500);
-		float dirY = Random.Range (0,500);
-		float dirZ = Random.Range (0,500);
-		transform.position = new V3 (0,2,0);
+		float dirX = Random.Range (0,100);
+		float dirY = Random.Range (0,100);
+		float dirZ = Random.Range (0,100);
+		transform.position = new V3 (0,1,0);
 		transform.rotation = Quaternion.identity;
-		rb.AddForce (transform.up * 500);
+		rb.AddForce (transform.up * 100);
 		rb.AddTorque (dirX, dirY, dirZ);
 		}
 	}
