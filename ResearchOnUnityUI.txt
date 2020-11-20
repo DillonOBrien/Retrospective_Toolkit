@@ -1,0 +1,32 @@
+Study Unity UI
+
+In order to get the dice to roll and create a functional game. It is important to study how unity UI works. 
+
+I have spent 2 hours researching unity UI and how it works along with making it function with the scripts. 
+Tasks that need to be handled by unity UI is 
+
+Menuscene
+Roll Button
+Display Images that die roll on. 
+
+I learned to make a UI
+- select game object -> ui -> image 
+- set x y and z position 
+image displays sprite
+canvas is root object of all UI elements
+event system handles input events
+
+I need to create an image background for the menu. 
+
+I need to utilize the canvas scaler to ensure ui elements retain same pixel size. 
+
+Nead to add header image 
+- select image in the hierarchy
+- create source image
+- set native size
+
+need to anchor position down. 
+
+Create button labeled as Start that ends menu scene
+create button labeled as credits that shows credits then returns to menu scene.
+Create button to roll dice. Simple grey button as defined by sponsor. 
