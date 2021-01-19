@@ -1,0 +1,17 @@
+Research on Unity to web integration 
+
+Today was spent studying WebGL and interacting with browser scripting to get the unity game to work with web browsers.
+Here are summarizations points 
+	- Unity does not provide functionality for WEB API
+	- Utilize WebGL 
+	- Cannot directly interface with javascript engine on browser
+	- Utilize .jslib extension in plugins subfolder in unity assets
+	-Ensure it has proper syntax 
+		-Refer to docs.unity3d for this
+	- Call functions using dll import
+		-DllImport("__Internal")]
+	- Call unity script functions from java script such as object name, methodname and value
+		-unityInstance.SendMessage('MyGameObject', 'MyFunction');
+	- build code is executed in its own scope
+	- prevents conflicts with embedding code.
+	- Do not call the internal javascript functions if you are able to. 
