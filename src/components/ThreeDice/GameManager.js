@@ -15,7 +15,13 @@ const GameManager = () => {
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
   const [dicePosition] = useAtom(diceDefaultState);
-
+<script>
+  function play() {
+  var audio = document.getElementById("audio");
+  audio.play());
+  }
+  </script>
+  var audio = document.getElementBy
   const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
@@ -77,9 +83,11 @@ const GameManager = () => {
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
                 randomizeDice();
+                "play()"
                 rerollDice(!reroll);
               }}
             >
+              <audio id="audio" src="2021_02_10_18_15_48.m4a"></audio> 
               Roll It!
             </Button>
           </Html>
