@@ -19,6 +19,8 @@ const ThemedDie = (props) => {
     imageSet,
     setImages,
     geom,
+    setOrbitControl,
+    mousePos,
   } = props;
   const textures = useTexture([...imageSet]);
 
