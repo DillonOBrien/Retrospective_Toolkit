@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect, useMemo } from "react";
 import { atom, useAtom } from "jotai";
 import PropTypes from "prop-types";
+import { useThree, useFrame } from "react-three-fiber";
 import { BoxBufferGeometry } from "three";
 import { uniqueImageSet } from "../Dice/Dice";
 import ThemedDie from "./ThemedDie";
@@ -66,6 +67,17 @@ const DiceManager = (props) => {
     setImagesThree,
     setImagesTwo,
   ]);
+  const { viewport } = useThree();
+  const mousePos = [];
+
+  useFrame((state) => {
+    const { mouse } = state;
+    const { width, height } = viewport();
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    raycaster.setFromCamera( mouse.clone(), camera );   
+  });
+  var objects = raycaster.intersectObjects(scene.children);
 
   return (
     <Suspense fallback={null}>
