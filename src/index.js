@@ -6,8 +6,9 @@ const options = {
   cors: true,
   origins: ["http://127.0.0.1:5000"],
 };
-const io = require("socket.io")(server, options);
+const io = require('socket.io')(http);
 const router = require("./routes");
+const http = require('http').Server(app);
 const session = require("./middleware/session");
 const port = process.env.PORT || 5000;
 app.use(express.json());
