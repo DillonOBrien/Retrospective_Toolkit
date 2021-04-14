@@ -1,9 +1,0 @@
-Research on Socket.io
-
-Research conducted was understanding comparing to a HTML webpage. First i created a html webpage using Node.js and the web framework express. 
-
-I reviewed over all the dependicies that were install during the command npm install. Further research into understanding the .js files that were developed such as views and routes along with setting up the main .js file app. 
-
-next step was understanding npm install socket.io to serve the client automatically. AN understanding of server passing and listening to the connection event by using console.log(). 
-
-In the end I reviewed and researched braodcasting and event handling with socket.io
