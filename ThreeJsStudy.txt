@@ -1,6 +1,0 @@
-Investigated information on Three.js for ability to change the order of the cubes
-
-This includes understanding more about the library of Three.js
-covered topics such as rending and understanding what each version of Threejs. This was helpful due to strugglign with using functions such as renderDepth being removed from r70. 
-
-Other topics concerning cube order was studied
