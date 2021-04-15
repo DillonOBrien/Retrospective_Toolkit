@@ -75,7 +75,7 @@ exports[`ThreeDice/GameManager Testing should do a snapshot test on GameManager 
         }
       }
     >
-      <GameManager />
+      <ThemedDie />
     </InnerProvider>
   </Component>
 </ContextProvider>

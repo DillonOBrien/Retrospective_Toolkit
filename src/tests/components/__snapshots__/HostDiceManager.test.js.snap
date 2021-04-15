@@ -75,7 +75,9 @@ exports[`ThreeDice/GameManager Testing should do a snapshot test on GameManager 
         }
       }
     >
-      <GameManager />
+      <DiceManager
+        reroll={false}
+      />
     </InnerProvider>
   </Component>
 </ContextProvider>

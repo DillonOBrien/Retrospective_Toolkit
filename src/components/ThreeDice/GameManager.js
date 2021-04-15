@@ -1,22 +1,24 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Html, useGLTF, useProgress } from "@react-three/drei";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
-import { gameStartState, diceDefaultState, rerollState } from "./gameState";
-import { randomizeDice } from "../Dice/Dice";
-import ThemedDie from "./ThemedDie";
-import CollisionMesh from "./CollisionMesh";
+import { rerollState } from "./gameState";
+import HostDiceManager from "./HostDiceManager";
+import UserDiceManager from "./UserDiceManager";
 
+const getRole = () =>
+  sessionStorage.getItem("role") ? sessionStorage.getItem("role") : "user";
 
 /* istanbul ignore next */
-const GameManager = () => {
-  const [gameStarted, setGameState] = useAtom(gameStartState);
+const GameManager = (props) => {
+  const { setOrbitControl, socket, roomId, gameStatus } = props;
+  const [gameStarted, setGameState] = useState(gameStatus);
   const [reroll, rerollDice] = useAtom(rerollState);
-  const [dicePosition] = useAtom(diceDefaultState);
-  var audioElement = new Audio('2021_02_10_18_08_15.m4a');
+  const rollSound = new Audio("/diceRoll.m4a");
+  const role = getRole();
   const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
@@ -40,9 +42,9 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<ProgressBar />}>
-		<ModelLoader url="table/BlackRedTable.glb" />
+        <ModelLoader url="../../table/BlackRedTable.glb" />
       </Suspense>
-      {!gameStarted && (
+      {!gameStarted && role === "host" && (
         <Html position={[-4, 0, 2]} scaleFactor={25}>
           <Button
             variant="contained"
@@ -51,26 +53,22 @@ const GameManager = () => {
             endIcon={<Icon>casino</Icon>}
             onClick={() => {
               setGameState(true);
-			        audioElement.play();
+              rollSound.play();
             }}
           >
             Start Game
           </Button>
         </Html>
       )}
-      {gameStarted && (
+      {gameStarted && role === "host" && (
         <>
-          <Suspense fallback={null}>
-            {dicePosition.map((pos) => (
-              <ThemedDie
-                key={pos.uuid}
-                theme="random"
-                dicePos={pos.position}
-                rerollToggle={reroll}
-              />
-            ))}
-            <CollisionMesh />
-          </Suspense>
+          <HostDiceManager
+            reroll={reroll}
+            setOrbitControl={setOrbitControl}
+            socket={socket}
+            roomId={roomId}
+            gameStatus={gameStatus}
+          />
           <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
               variant="contained"
@@ -78,8 +76,8 @@ const GameManager = () => {
               className={classes.button}
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
-                randomizeDice();
                 rerollDice(!reroll);
+                rollSound.play();
               }}
             >
               Roll It!
@@ -87,8 +85,25 @@ const GameManager = () => {
           </Html>
         </>
       )}
+      {role === "user" && (
+        <>
+          <UserDiceManager
+            setOrbitControl={setOrbitControl}
+            socket={socket}
+            gameStatus={gameStatus}
+            roomId={roomId}
+          />
+        </>
+      )}
     </>
   );
+};
+GameManager.propTypes = {
+  setOrbitControl: PropTypes.func.isRequired,
+  roomId: PropTypes.string.isRequired,
+  gameStatus: PropTypes.bool.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  socket: PropTypes.object.isRequired,
 };
 /* istanbul ignore next */
 const ProgressBar = () => {
@@ -96,10 +111,10 @@ const ProgressBar = () => {
   return <Html center>{Math.trunc(progress)} % loaded</Html>;
 };
 /* istanbul ignore next */
-function ModelLoader({ url }) {
+const ModelLoader = ({ url }) => {
   const { scene } = useGLTF(url);
   return <primitive object={scene} dispose={null} />;
-}
+};
 ModelLoader.propTypes = {
   url: PropTypes.string.isRequired,
 };
