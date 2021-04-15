@@ -6,6 +6,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import PropTypes from "prop-types";
 import InfoCard from "../components/InfoCard";
 import ThreeDice from "../components/ThreeDice/ThreeDice";
 
@@ -18,13 +19,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // Returns a landing page for the Dice Game
-const DiceLanding = () => {
+const DiceLanding = (props) => {
+  const { socket, roomId, gameStatus } = props;
   const classes = useStyles();
 
   return (
     <div>
       <Grid className={classes.root} container direction="row">
-        <Grid item xs={4}>
+        <Grid item xs={12}>
           <InfoCard
             title="Cube Game"
             body="This cube game is intended to promote communication and understanding within a team."
@@ -34,13 +36,18 @@ const DiceLanding = () => {
             To re-roll all die, click the 'Roll It!' button, to re-roll one die, click on a single die to re-roll."
           />
         </Grid>
+        <Grid item xs={12}>
+          <ThreeDice socket={socket} roomId={roomId} gameStatus={gameStatus} />
+        </Grid>
       </Grid>
-      {/* ThreeDice Game */}
-      <div>
-        <ThreeDice />
-      </div>
     </div>
   );
+};
+DiceLanding.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  socket: PropTypes.object.isRequired,
+  roomId: PropTypes.string.isRequired,
+  gameStatus: PropTypes.bool.isRequired,
 };
 
 export default DiceLanding;
