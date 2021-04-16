@@ -1,0 +1,25 @@
+.video-js {
+  width: 640px;
+  height: 360px;}
+.video-js.video-js .vjs-big-play-button {
+  background-color: #000000;
+  opacity: .7;
+  width: 100px;
+  height: 80px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #FFFFFF;
+}
+.video-js.video-js .vjs-big-play-button:before {
+  margin-top: 27px;
+  margin-left: 30px;
+  font-size: 4em;
+  color: black;
+  opacity: .1;
+}
